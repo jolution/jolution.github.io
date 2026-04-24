@@ -1,6 +1,6 @@
-# Disallow all bots
+# Allow all bots
 User-agent: *
-Disallow: /
+Allow: /
 
 # Sitemap
-Sitemap: https://jolution.dev/sitemap-index.xml
+Sitemap: https://jolution.com/sitemap-index.xml

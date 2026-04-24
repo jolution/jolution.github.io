@@ -55,8 +55,9 @@ const {
 
 // For social sharing, we need the full absolute URL
 // If image is an ImageMetadata object, use its src, otherwise treat as string path
-const imagePath = image ? (typeof image === 'string' ? image : image.src) : '/social-preview-image.png'
+const imagePath = image ? (typeof image === 'string' ? image : image.src) : '/social-preview-image.jpg'
 const imageUrl = new URL(imagePath, Astro.site).href
+const absoluteUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 const locale = lang === 'en' ? 'en_US' : 'de_DE'
@@ -93,13 +94,13 @@ const locale = lang === 'en' ? 'en_US' : 'de_DE'
       titleTemplate={useTitleTemplate ? `%s - ${themeConfig.seo.title}` : undefined}
       titleDefault={themeConfig.seo.title}
       description={description}
-      canonical={url}
+      canonical={absoluteUrl}
       openGraph={{
         basic: {
           title: title,
           type: type,
           image: imageUrl,
-          url: url,
+          url: absoluteUrl,
         },
         optional: {
           description: description,
@@ -111,7 +112,7 @@ const locale = lang === 'en' ? 'en_US' : 'de_DE'
         image: {
           url: imageUrl,
           secureUrl: imageUrl,
-          type: 'image/png',
+          type: 'image/jpeg',
           width: 1200,
           height: 630,
           alt: title,
