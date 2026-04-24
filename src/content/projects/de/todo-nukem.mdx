@@ -11,21 +11,14 @@ import { Link } from 'accessible-astro-components'
 
 ## Projektübersicht
 
-TODO NUKEM ist eine leichtgewichtige Konvention für TODO-Kommentare im Code. Sie gibt klare Regeln vor, wie TODOs mit Priorität, Typ und Kontext strukturiert werden sollen – für schnelle visuelle Erfassung und spätere Automatisierung.
+TODO NUKEM ist eine leichtgewichtige Konvention für strukturierte TODO-Kommentare im Code. Jeder Kommentar folgt dem Schema `[Priorität] [Typ] [Kontext]` – für schnelle visuelle Erfassung und einfache Automatisierung.
+
+Das Ökosystem besteht aus mehreren Tools: Die [**VSCode Extension**](https://github.com/jolution/todo-nukem-vscode) ermöglicht das interaktive Erstellen von TODO-Kommentaren mit geführten Prompts und bietet eine Übersicht aller TODOs im Projekt mit Filteroptionen. Das [**ESLint-Plugin**](https://github.com/jolution/eslint-plugin-todo-nukem) validiert automatisch, ob Kommentare der Konvention entsprechen. Die [**Copilot Instructions**](https://github.com/jolution/todo-nukem/blob/main/.github/copilot-instructions.md#todo-comments) erlauben die Nutzung der Konvention direkt mit GitHub Copilot. Die [**GitHub Action**](https://github.com/jolution/todo-nukem-pr-ticket-link) fügt automatisch Ticket-Links in Pull-Request-Beschreibungen ein.
 
 ```
 // TODO: [low] [feature] [optimize] Gear up and get ready to "Hail to the king, baby!"
 // TODO: 🟩 ✨ 🛠️ Gear up and get ready to "Hail to the king, baby!"
 ```
-
-## Bestandteile
-
-| Tool                  | Plattform          | Beschreibung                             |
-| --------------------- | ------------------ | ---------------------------------------- |
-| VSCode Extension      | Visual Studio Code | Generator, Viewer und Snippets           |
-| ESLint Rule           | ESLint             | Validierung der Convention               |
-| Copilot Instructions  | GitHub Copilot     | Nutzung mit Copilot                      |
-| PR Ticket Link Action | GitHub Actions     | Ticket-Links in PRs automatisch einfügen |
 
 ## Tech Stack
 
@@ -35,12 +28,28 @@ TODO NUKEM ist eine leichtgewichtige Konvention für TODO-Kommentare im Code. Si
 
 ## Links
 
-<Link href="https://github.com/jolution/todo-nukem" isExternal>
-  GitHub Repository
-</Link>
+- [todo-nukem (Convention & Doku)](https://github.com/jolution/todo-nukem)
+- [todo-nukem-vscode (VSCode Extension)](https://github.com/jolution/todo-nukem-vscode)
+- [eslint-plugin-todo-nukem (ESLint Rule)](https://github.com/jolution/eslint-plugin-todo-nukem)
+- [Copilot Instructions](https://github.com/jolution/todo-nukem/blob/main/.github/copilot-instructions.md#todo-comments)
+- [todo-nukem-pr-ticket-link (GitHub Action)](https://github.com/jolution/todo-nukem-pr-ticket-link)
+
+## Open Source
+
+TODO NUKEM ist Open Source und wird von mehreren Contributorinnen und Contributoren getragen.
+
+- [Contributors (todo-nukem)](https://github.com/jolution/todo-nukem/graphs/contributors)
+- [Contributors (todo-nukem-vscode)](https://github.com/jolution/todo-nukem-vscode/graphs/contributors)
+- [Contributors (eslint-plugin-todo-nukem)](https://github.com/jolution/eslint-plugin-todo-nukem/graphs/contributors)
+- [Contributors (todo-nukem-pr-ticket-link)](https://github.com/jolution/todo-nukem-pr-ticket-link/graphs/contributors)
+
+✍️ Authors (in alphabetical order)
+
+- [@juliankasimir](https://github.com/juliankasimir)
+- [@pimmok](https://github.com/pimmok)
 
 ## Support
 
 <Link href="https://github.com/jolution/todo-nukem" isExternal isButton>
-  GitHub Repo mit Sternen unterstuetzen
+  GitHub Repo mit Sternen unterstützen
 </Link>

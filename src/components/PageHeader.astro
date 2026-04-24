@@ -110,7 +110,11 @@ const sanitizedSubtitle: string = subtitle
       showBreadcrumbs &&
         (() => {
           const path = Astro.url.pathname
-          const segments = path.split('/').filter(Boolean)
+          const rawSegments = path.split('/').filter(Boolean)
+          const localeSegment = rawSegments[0] === 'de' || rawSegments[0] === 'en' ? rawSegments[0] : undefined
+          const segments = localeSegment ? rawSegments.slice(1) : rawSegments
+          const homeHref = localeSegment ? `/${localeSegment}` : '/'
+          const localePrefix = localeSegment ? `/${localeSegment}` : ''
 
           if (segments.length === 0) {
             return null
@@ -118,13 +122,13 @@ const sanitizedSubtitle: string = subtitle
 
           return (
             <Breadcrumbs>
-              <BreadcrumbsItem href="/" label="Home" />
+              <BreadcrumbsItem href={homeHref} label="Home" />
               {segments.map((segment, index) => {
                 if (joinLastBreadcrumb && index === segments.length - 1) {
                   return null
                 }
 
-                const url = `/${segments.slice(0, index + 1).join('/')}`
+                const url = `${localePrefix}/${segments.slice(0, index + 1).join('/')}`
                 const isLast = index === segments.length - 1 || (joinLastBreadcrumb && index === segments.length - 2)
 
                 const formattedName = (() => {

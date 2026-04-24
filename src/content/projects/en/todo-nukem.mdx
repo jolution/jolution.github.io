@@ -11,21 +11,14 @@ import { Link } from 'accessible-astro-components'
 
 ## Project overview
 
-TODO NUKEM is a lightweight convention for TODO comments in code. It defines clear rules for structuring TODOs with priority, type, and context - for fast visual scanning and later automation.
+TODO NUKEM is a lightweight convention for structured TODO comments in code. Each comment follows the pattern `[priority] [type] [context]` — for fast visual scanning and easy automation.
+
+The ecosystem consists of several tools: The [**VSCode Extension**](https://github.com/jolution/todo-nukem-vscode) enables interactive TODO comment creation with guided prompts and provides a filterable overview of all TODOs in the project. The [**ESLint plugin**](https://github.com/jolution/eslint-plugin-todo-nukem) automatically validates whether comments follow the convention. The [**Copilot Instructions**](https://github.com/jolution/todo-nukem/blob/main/.github/copilot-instructions.md#todo-comments) allow using the convention directly with GitHub Copilot. The [**GitHub Action**](https://github.com/jolution/todo-nukem-pr-ticket-link) automatically adds ticket links to Pull Request descriptions.
 
 ```
 // TODO: [low] [feature] [optimize] Gear up and get ready to "Hail to the king, baby!"
 // TODO: 🟩 ✨ 🛠️ Gear up and get ready to "Hail to the king, baby!"
 ```
-
-## Components
-
-| Tool                  | Platform           | Description                                 |
-| --------------------- | ------------------ | ------------------------------------------- |
-| VSCode Extension      | Visual Studio Code | Generator, viewer, and snippets             |
-| ESLint Rule           | ESLint             | Convention validation                       |
-| Copilot Instructions  | GitHub Copilot     | Usage with Copilot                          |
-| PR Ticket Link Action | GitHub Actions     | Automatically inserts ticket links into PRs |
 
 ## Tech stack
 
@@ -35,9 +28,25 @@ TODO NUKEM is a lightweight convention for TODO comments in code. It defines cle
 
 ## Links
 
-<Link href="https://github.com/jolution/todo-nukem" isExternal>
-  GitHub repository
-</Link>
+- [todo-nukem (Convention & Docs)](https://github.com/jolution/todo-nukem)
+- [todo-nukem-vscode (VSCode Extension)](https://github.com/jolution/todo-nukem-vscode)
+- [eslint-plugin-todo-nukem (ESLint Rule)](https://github.com/jolution/eslint-plugin-todo-nukem)
+- [Copilot Instructions](https://github.com/jolution/todo-nukem/blob/main/.github/copilot-instructions.md#todo-comments)
+- [todo-nukem-pr-ticket-link (GitHub Action)](https://github.com/jolution/todo-nukem-pr-ticket-link)
+
+## Open Source
+
+TODO NUKEM is open source and built by multiple contributors across its ecosystem.
+
+- [Contributors (todo-nukem)](https://github.com/jolution/todo-nukem/graphs/contributors)
+- [Contributors (todo-nukem-vscode)](https://github.com/jolution/todo-nukem-vscode/graphs/contributors)
+- [Contributors (eslint-plugin-todo-nukem)](https://github.com/jolution/eslint-plugin-todo-nukem/graphs/contributors)
+- [Contributors (todo-nukem-pr-ticket-link)](https://github.com/jolution/todo-nukem-pr-ticket-link/graphs/contributors)
+
+✍️ Authors (in alphabetical order)
+
+- [@juliankasimir](https://github.com/juliankasimir)
+- [@pimmok](https://github.com/pimmok)
 
 ## Support
 
