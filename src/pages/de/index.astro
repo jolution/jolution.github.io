@@ -27,7 +27,10 @@ const yearsSinceFoundation = new Date().getFullYear() - 2013
   </section>
   <section class="my-64">
     <div class="container">
-      <Heading level="h2" class="mb-8">Jolution in 9 Dingen</Heading>
+      <Heading level="h2" class="mb-8">
+        <span class="md:hidden">Jolution in 3 Dingen</span>
+        <span class="hidden md:inline">Jolution in 9 Dingen</span>
+      </Heading>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <Feature icon="lucide:monitor-smartphone" title="Frontend">
           Jolution baut vor allem an der Schnittstelle zwischen Idee, Interface und funktionierendem Produkt.
@@ -39,24 +42,26 @@ const yearsSinceFoundation = new Date().getFullYear() - 2013
           Auf GitHub zeigt sich Jolution offen, experimentell und produktnah mit Repositories, die wirklich benutzt
           werden sollen.
         </Feature>
-        <Feature icon="lucide:wand-sparkles" title="Prototyping">
-          Neue Ideen werden lieber früh ausprobiert als lange theoretisch geplant.
-        </Feature>
-        <Feature icon="lucide:workflow" title="Developer Experience">
-          Ein Schwerpunkt liegt auf Workflows, Automatisierung und Werkzeugen, die Entwicklungsarbeit einfacher machen.
-        </Feature>
-        <Feature icon="lucide:puzzle" title="Extensions">
-          Browser- und VS-Code-Erweiterungen gehören genauso dazu wie klassische Websites und Apps.
-        </Feature>
-        <Feature icon="lucide:rocket" title="Pragmatisch">
-          Entscheidend ist nicht Show, sondern ob eine Idee sauber umgesetzt ist und im Alltag trägt.
-        </Feature>
-        <Feature icon="lucide:users" title="Community">
-          Feedback, Issues, Pull Requests und sichtbare Weiterentwicklung sind ein fester Teil der Projektkultur.
-        </Feature>
-        <Feature icon="lucide:heart" title="Langfristig">
-          Jolution ist kein kurzfristiges Showcase, sondern ein Rahmen für Dinge, die über Jahre weiterwachsen dürfen.
-        </Feature>
+        <div class="hidden md:contents">
+          <Feature icon="lucide:wand-sparkles" title="Prototyping">
+            Neue Ideen werden lieber früh ausprobiert als lange theoretisch geplant.
+          </Feature>
+          <Feature icon="lucide:workflow" title="Developer Experience">
+            Ein Schwerpunkt liegt auf Workflows, Automatisierung und Werkzeugen, die Entwicklungsarbeit einfacher machen.
+          </Feature>
+          <Feature icon="lucide:puzzle" title="Extensions">
+            Browser- und VS-Code-Erweiterungen gehören genauso dazu wie klassische Websites und Apps.
+          </Feature>
+          <Feature icon="lucide:rocket" title="Pragmatisch">
+            Entscheidend ist nicht Show, sondern ob eine Idee sauber umgesetzt ist und im Alltag trägt.
+          </Feature>
+          <Feature icon="lucide:users" title="Community">
+            Feedback, Issues, Pull Requests und sichtbare Weiterentwicklung sind ein fester Teil der Projektkultur.
+          </Feature>
+          <Feature icon="lucide:heart" title="Langfristig">
+            Jolution ist kein kurzfristiges Showcase, sondern ein Rahmen für Dinge, die über Jahre weiterwachsen dürfen.
+          </Feature>
+        </div>
       </div>
     </div>
   </section>
