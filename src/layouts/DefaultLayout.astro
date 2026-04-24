@@ -9,6 +9,7 @@ import CallToAction from '@components/CallToAction.astro'
 import Sponsorship from '@components/Sponsorship.astro'
 import { ClientRouter } from 'astro:transitions'
 import type { ImageMetadata } from 'astro'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
 
 interface Props {
   /**
@@ -56,9 +57,12 @@ const {
 // If image is an ImageMetadata object, use its src, otherwise treat as string path
 const imagePath = image ? (typeof image === 'string' ? image : image.src) : '/social-preview-image.png'
 const imageUrl = new URL(imagePath, Astro.site).href
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const locale = lang === 'en' ? 'en_US' : 'de_DE'
 ---
 
-<html lang="de" dir="ltr">
+<html lang={lang} dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -100,9 +104,9 @@ const imageUrl = new URL(imagePath, Astro.site).href
         optional: {
           description: description,
           siteName: themeConfig.seo.title,
-          locale: 'de_DE',
+          locale: locale,
           audio: undefined,
-          videos: undefined,
+          video: undefined,
         },
         image: {
           url: imageUrl,
@@ -148,9 +152,9 @@ const imageUrl = new URL(imagePath, Astro.site).href
       <slot />
     </main>
     <CallToAction
-      title="Support my projects on GitHub"
+      title={t('cta.supportTitle')}
       link="https://github.com/jolution"
-      linkText="Give a star on GitHub"
+      linkText={t('cta.supportButton')}
     />
     <Sponsorship />
     <Footer />

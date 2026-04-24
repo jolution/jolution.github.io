@@ -1,8 +1,13 @@
 ---
 import { Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
+import LanguagePicker from '@components/LanguagePicker.astro'
+import { getLangFromUrl, useTranslatedPath, useTranslations } from '@i18n/utils'
 
 const currentYear = new Date().getFullYear()
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const translatePath = useTranslatedPath(lang)
 ---
 
 <footer>
@@ -28,12 +33,12 @@ const currentYear = new Date().getFullYear()
             <span class="text-sm font-bold sm:text-lg">Jolution</span>
           </div>
           <p class="text-sm leading-relaxed">
-            Persönliche Seite von Julian Kasimir mit Projekten, Ideen und Themen, die Jolution heute bewegen.
+            {t('footer.description')}
           </p>
         </div>
 
         <div class="flex flex-col gap-4">
-          <p class="font-semibold">Kontakt</p>
+          <p class="font-semibold">{t('footer.contact')}</p>
           <ul class="flex flex-col gap-3">
             <li>
               <Link isExternal href="https://www.instagram.com/jolution" hideIcon>
@@ -44,7 +49,7 @@ const currentYear = new Date().getFullYear()
             <li>
               <button id="footer-reveal-email-btn" type="button" class="flex items-center gap-2 underline-offset-4 hover:underline">
                 <Icon aria-hidden="true" name="lucide:mail" size={18} />
-                E-Mail anzeigen
+                {t('footer.email')}
               </button>
               <span id="footer-email-reveal" class="hidden" aria-live="polite"></span>
             </li>
@@ -52,11 +57,11 @@ const currentYear = new Date().getFullYear()
         </div>
 
         <div class="flex flex-col gap-4">
-          <p class="font-semibold">Rechtliches</p>
+          <p class="font-semibold">{t('footer.legal')}</p>
           <ul class="flex flex-col gap-3">
-            <li><Link href="/impressum">Impressum</Link></li>
-            <li><Link href="/datenschutz">Datenschutz</Link></li>
-            <li><Link href="/agb">AGB</Link></li>
+            <li><Link href={translatePath('/impressum')}>{t('footer.imprint')}</Link></li>
+            <li><Link href={translatePath('/datenschutz')}>{t('footer.privacy')}</Link></li>
+            <li><Link href={translatePath('/agb')}>{t('footer.terms')}</Link></li>
           </ul>
         </div>
 
@@ -67,6 +72,7 @@ const currentYear = new Date().getFullYear()
   <section class="py-6 border-t border-[var(--border-color-subtle)]">
     <div class="container flex flex-col gap-2 text-sm md:flex-row md:justify-between">
       <p>&copy; {currentYear} jolution</p>
+      <LanguagePicker />
     </div>
   </section>
 </footer>

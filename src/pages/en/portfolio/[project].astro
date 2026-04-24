@@ -1,13 +1,11 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-// import SocialShares from '@components/SocialShares.astro'
-import { Heading } from 'accessible-astro-components'
 import { getCollection, render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects', ({ data, id }) => !data.draft && id.startsWith('de/'))
+  const projects = await getCollection('projects', ({ data, id }) => !data.draft && id.startsWith('en/'))
 
   const projectImages = [
     { src: '/projects/project-image-1.png' },
@@ -19,7 +17,7 @@ export async function getStaticPaths() {
   ]
 
   return projects.map((project, index) => {
-    const slug = project.id.replace('de/', '')
+    const slug = project.id.replace('en/', '')
     const projectWithImage = {
       ...project,
       slug,
@@ -47,7 +45,7 @@ const author = {
 }
 ---
 
-<DefaultLayout title={project.data.title} description={project.data.description} url={`/portfolio/${project.slug}`}>
+<DefaultLayout title={project.data.title} description={project.data.description} url={`/en/portfolio/${project.slug}`}>
   <PageHeader
     title={project.data.title}
     subtitle={project.data.description}
@@ -60,13 +58,6 @@ const author = {
       <Content />
     </div>
   </section>
-  {/* <section class="my-12">
-    <div class="narrow space-content container">
-      <Heading level="h2">Share this project</Heading>
-      <p>Like this project? Share it with your network!</p>
-      <SocialShares />
-    </div>
-  </section> */}
 </DefaultLayout>
 
 <style lang="scss" is:global>

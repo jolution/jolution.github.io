@@ -2,6 +2,7 @@
 import { Badge, Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
+import { getLangFromUrl, useTranslatedPath, useTranslations } from '@i18n/utils'
 
 /**
  * FeaturedProjects Component
@@ -25,16 +26,20 @@ interface Props {
   title?: string
 }
 
-const { class: className, limit, title = 'Meine Projekte' } = Astro.props
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const translatePath = useTranslatedPath(lang)
+const { class: className, limit, title = t('projects.title') } = Astro.props
 
 // Get projects from content collection (exclude drafts)
-const projects = await getCollection('projects', ({ data }) => !data.draft)
+const projects = await getCollection('projects', ({ data, id }) => !data.draft && id.startsWith(`${lang}/`))
 const projectImages = ['/projects/project-image-1.png', '/projects/project-image-2.png', '/projects/project-image-3.png']
 
 // Show all projects (or limited amount) and add featured images
 const allProjects = limit ? projects.slice(0, limit) : projects
 const featuredProjects = allProjects.map((project, index) => ({
   ...project,
+  slug: project.id.replace(`${lang}/`, ''),
   featuredImageSrc: project.data.featuredImage || null,
   featuredImageCardSrc: project.data.featuredImageCard || project.data.featuredImage || null,
   featuredImageFallback: projectImages[index % projectImages.length],
@@ -53,7 +58,7 @@ const featuredProjects = allProjects.map((project, index) => ({
         featuredProjects.map((project) => (
           <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24">
             <a
-              href={'/portfolio/' + project.id}
+              href={translatePath(`/portfolio/${project.slug}`)}
               tabindex="-1"
               aria-hidden="true"
               class:list={['media-wrapper rounded-lg overflow-hidden block', project.reverseImg ? 'md:order-last' : '']}
@@ -85,14 +90,14 @@ const featuredProjects = allProjects.map((project, index) => ({
                 ))}
               </div>
               <Heading level="h3">
-                <a href={'/portfolio/' + project.id} class="hover:underline">
+                <a href={translatePath(`/portfolio/${project.slug}`)} class="hover:underline">
                   {project.data.title}
                 </a>
               </Heading>
               <p class="text-xl">{project.data.description}</p>
               <div>
-                <Link href={'/portfolio/' + project.id} isButton animateOnHover animationType="nudge" aria-hidden="true" tabindex="-1">
-                  Mehr lesen
+                <Link href={translatePath(`/portfolio/${project.slug}`)} isButton animateOnHover animationType="nudge" aria-hidden="true" tabindex="-1">
+                  {t('projects.readMore')}
                   <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
                 </Link>
               </div>

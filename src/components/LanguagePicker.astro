@@ -1,0 +1,51 @@
+---
+import { languages } from '@i18n/ui'
+import { getLangFromUrl, stripLangFromPath, useTranslatedPath } from '@i18n/utils'
+
+const currentLang = getLangFromUrl(Astro.url)
+const translatePath = useTranslatedPath(currentLang)
+const basePath = stripLangFromPath(Astro.url.pathname)
+---
+
+<ul class="language-picker" aria-label="Language picker">
+  {
+    Object.entries(languages).map(([lang, label]) => (
+      <li>
+        <a
+          href={translatePath(basePath, lang as keyof typeof languages)}
+          aria-current={lang === currentLang ? 'true' : undefined}
+          aria-label={lang === currentLang ? `${label}, current language` : `Switch language to ${label}`}
+        >
+          <span aria-hidden="true">{lang.toUpperCase()}</span>
+          <span class="sr-only">{label}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .language-picker {
+    display: inline-flex;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    align-items: center;
+  }
+
+  .language-picker li + li::before {
+    content: '|';
+    margin-inline-end: 0.4rem;
+    color: var(--text-color-soft, currentColor);
+  }
+
+  .language-picker a[aria-current='true'] {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    font-weight: 700;
+  }
+</style>
