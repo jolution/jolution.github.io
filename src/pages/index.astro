@@ -1,0 +1,110 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import Hero from '@components/Hero.astro'
+import Feature from '@components/Feature.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import FeaturedProjects from '@components/FeaturedProjects.astro'
+import { Heading, Link } from 'accessible-astro-components'
+
+const yearsSinceFoundation = new Date().getFullYear() - 2013
+---
+
+<DefaultLayout title="Jolution - Projekte, Ideen und Experimente" useTitleTemplate={false}>
+  <Hero />
+  <section class="my-32">
+    <div class="container">
+      <Heading level="h2" class="mb-8">Über Jolution</Heading>
+      <p class="max-w-3xl text-xl leading-relaxed">
+        Jolution wurde vor {yearsSinceFoundation} Jahren, im August 2013, gegründet, um Projekte zu realisieren, Prototypen zu bauen und Ideen zu entwickeln.<br /><br />Über viele Jahre gehörten dazu auch Websites und Apps für Kunden. Heute liegt der Fokus stärker auf eigenen Vorhaben.
+      </p>
+      <div class="mt-8">
+        <Link href="#projekte" isButton type="secondary" animateOnHover animationType="boop">
+          Projekte anzeigen
+        </Link>
+      </div>
+    </div>
+  </section>
+  <section class="my-64">
+    <div class="container">
+      <Heading level="h2" class="mb-8">Jolution in 9 Dingen</Heading>
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <Feature icon="lucide:monitor-smartphone" title="Frontend">
+          Jolution baut vor allem an der Schnittstelle zwischen Idee, Interface und funktionierendem Produkt.
+        </Feature>
+        <Feature icon="lucide:package" title="Eigene Tools">
+          Viele Projekte entstehen aus konkreten Reibungen im Alltag und werden zu kleinen Tools mit echtem Nutzen.
+        </Feature>
+        <Feature icon="lucide:github" title="Open Source">
+          Auf GitHub zeigt sich Jolution offen, experimentell und produktnah mit Repositories, die wirklich benutzt werden sollen.
+        </Feature>
+        <Feature icon="lucide:wand-sparkles" title="Prototyping">
+          Neue Ideen werden lieber früh ausprobiert als lange theoretisch geplant.
+        </Feature>
+        <Feature icon="lucide:workflow" title="Developer Experience">
+          Ein Schwerpunkt liegt auf Workflows, Automatisierung und Werkzeugen, die Entwicklungsarbeit einfacher machen.
+        </Feature>
+        <Feature icon="lucide:puzzle" title="Extensions">
+          Browser- und VS-Code-Erweiterungen gehören genauso dazu wie klassische Websites und Apps.
+        </Feature>
+        <Feature icon="lucide:rocket" title="Pragmatisch">
+          Entscheidend ist nicht Show, sondern ob eine Idee sauber umgesetzt ist und im Alltag trägt.
+        </Feature>
+        <Feature icon="lucide:users" title="Community">
+          Feedback, Issues, Pull Requests und sichtbare Weiterentwicklung sind ein fester Teil der Projektkultur.
+        </Feature>
+        <Feature icon="lucide:heart" title="Langfristig">
+          Jolution ist kein kurzfristiges Showcase, sondern ein Rahmen für Dinge, die über Jahre weiterwachsen dürfen.
+        </Feature>
+      </div>
+    </div>
+  </section>
+  {/* TODO: Die technische Seite – noch zu entscheiden
+  <ContentMedia imgSrc="/profil-jolution.webp">
+    <Heading level="h2">Die technische Seite</Heading>
+    <p class="text-2xl">
+      Alles rund um Webentwicklung, eigene Apps und digitale Services läuft unter meiner anderen Brand. Dort findest du
+      meine professionellen Projekte, Dienstleistungen und mehr.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <Link isExternal isButton href="https://jolution.de" type="primary" animateOnHover animationType="boop">
+        Zu Jolution
+      </Link>
+      <Link
+        isExternal
+        isButton
+        href="https://www.instagram.com/jolution/"
+        type="secondary"
+        animateOnHover
+        animationType="boop"
+      >
+        Jolution auf Instagram
+      </Link>
+    </div>
+  </ContentMedia>
+  */}
+  <section class="my-32">
+    <div class="container">
+      <Heading level="h2" class="mb-8">Was diese Seite ist</Heading>
+      <p class="max-w-3xl text-xl leading-relaxed">
+        Hier zeige ich vor allem die aktuellen Jolution-Projekte: Open-Source-Tools, Browser- und VS-Code-Extensions,
+        Developer-Workflows und Prototypen. Dazu gehören unter anderem TODO NUKEM, LeCheckout for Jira, GitBrush,
+        Blocky sowie Experimente rund um GitHub Actions und Mikrocontroller.<br/><br/>
+        
+        In 2025 habe ich den Kundenbereich
+        bewusst stark reduziert um mich mehr auf die Projekte zu konzentrieren, deshalb finden Sie hier keine
+        Kundenprojekte mehr. Kleinere Arbeiten im klassischen Gewerbe finden Sie auf <Link isExternal href="https://jolution.de">jolution.de</Link>.
+      </p>
+    </div>
+  </section>
+  <div id="projekte">
+    <FeaturedProjects />
+  </div>
+</DefaultLayout>
+
+<style>
+  .avatar {
+    border: 1px solid var(--border-color-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-s);
+  }
+</style>

@@ -1,0 +1,171 @@
+---
+import { Link } from 'accessible-astro-components'
+
+const toUnit = (value: number) => value - Math.floor(value)
+
+const stars = Array.from({ length: 240 }, (_, index) => {
+  const x = toUnit(Math.sin((index + 1) * 12.9898) * 43758.5453)
+  const y = toUnit(Math.sin((index + 1) * 78.233) * 24634.6345)
+  const size = toUnit(Math.sin((index + 1) * 45.164) * 82917.3234)
+
+  return {
+    cx: Math.round(x * 1920),
+    cy: Math.round(y * 1080),
+    r: size > 0.78 ? 2 : 1,
+  }
+})
+---
+
+<section class="p-0 my-0 relative">
+  <div class="relative w-full h-0 overflow-hidden flex justify-center pb-[56.25%]" aria-hidden="true">
+    <div id="bg" class="absolute top-0 left-0 w-full h-full object-cover">
+      <div class="relative h-0 w-full p-[0 0 100%] pb-[56.25%]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute h-full w-full left-0 top-0"
+          width="1920"
+          height="1080"
+          viewBox="0 0 1920 1080"
+          style="background-color:#c7d5e4;background:linear-gradient(65deg, rgb(199 213 228) 0%, rgba(255, 153, 0, 0.14) 18%, #337ab7 65%, #0099cc 100%);"
+        >
+          <g class="invisible dark:visible">
+            {
+              stars.map((star) => (
+                <circle cx={star.cx} cy={star.cy} r={star.r} fill="#ccc"></circle>
+              ))
+            }
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div id="huegel" class="absolute top-0 left-0 z-20 w-full h-full object-cover translate-y-6">
+      <div class="relative h-0 w-full p-[0 0 100%] pb-[56.25%]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-full w-full left-0 top-0" width="1920" height="1080" viewBox="0 0 1920 1080">
+          <path class="fill-[#22343b] dark:fill-[#1c1918]" d="M1429.09 909.43l96-22 64-35 102-10 40 8 45 7 88 12 56 6.5v204.5h-923l175-85 125-49 132-37z"></path>
+          <path fill="#e7e0b1" d="M1863.82 869.38l-1.94 5.52-8.81 5.22-7.13 8.7-19.81 3.38-6.77 8.7 52.19 14.01h12.08l3.86 4.84-25.12 7.73-43.01 8.21-73.93 5.8-28.03 2.9-22.23 7.73-25.12 13.53-43.01 34.8-13.53 5.31-18.85 4.35-21.26 9.66-10.15 14.5-12.08 30.93-3.69 15.18h7.79l2.18-13.73 12.57-30.45 7.25-11.11 16.43-6.77 22.22-6.76 16.92-4.83 42.04-37.21 25.13-10.15 22.22-7.73 15.47-4.35 65.71-3.87 45.91-7.73 41.56-6.76 3.38-7.73-8.7-13.53-15.46-2.42-38.13-7.86 20.73-4.7 6.28-9.91 7.74-5.07 2.97-7.63-5.87-.7z"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div id="haus" class="absolute top-0 left-0 z-30 w-full h-full object-cover">
+      <video
+        class="absolute h-auto z-10 top-[41.5%] left-[30.5%] w-[4.6%]"
+        poster=""
+        playsinline
+        autoplay
+        muted
+        loop
+        id="person"
+      >
+        <source src="/vid/coding.webm" type="video/webm" />
+        <source src="/vid/coding.mp4" type="video/mp4" />
+      </video>
+      <div class="relative h-0 w-full p-[0 56.25% 100%] pb-[56.25%]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-full w-full left-0 top-0" width="1920" height="1080" viewBox="0 0 1920 1080">
+          <path d="M-.09 805.39L56.81 788h736.42l147.87 6.57 178.31 34.02 146.5 33.34 161 47.14 461.62 170.86-1888.62.14V805.39z" id="huegel_haus"></path>
+          <path d="M272.09 133.57l121 121h332l48 181h-30v316l30 42.5v286.36h-738V440.57l-33.5-33.5 270.5-273.5z" id="haus"></path>
+          <path fill="#1a1a1a" stroke="#000000" stroke-miterlimit="10" d="M523.78 874.57h213.1v205h-213.1z" id="garage"></path>
+          <g id="fenster">
+            <path class="fill-slate-50 dark:fill-[#f3f2f3]" d="M124.09 448.57h84v111h-84zM330.09 448.57h84v111h-84zM587.09 448.57h84v111h-84zM584.09 628.57h84v111h-84zM330.09 628.57h84v111h-84zM124.09 628.57h84v111h-84z"></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div
+      id="logo"
+      class="pointer-events-none absolute top-0 left-0 z-10 w-auto h-full object-cover left-[70%] desktop:left-[90%] smartphone:top-[10%] desktop:top-[40%]"
+    >
+      <svg
+        style="width:100px;"
+        viewBox="0 0 400 400"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          class="fill-white"
+          d="M200 0A200 200 0 0 0 0 200a200 200 0 0 0 200 200 200 200 0 0 0 200-200 200 200 0 0 0-76.736-157.21l-.028 156.01c0 4.268-.214 8.484-.636 12.64-.422 4.155-1.05 8.25-1.873 12.273-.824 4.023-1.843 7.975-3.047 11.846-1.204 3.87-2.593 7.66-4.157 11.356-1.563 3.697-3.302 7.302-5.205 10.805-1.903 3.504-3.97 6.904-6.19 10.192-2.222 3.288-4.6 6.463-7.118 9.516-2.52 3.052-5.18 5.98-7.977 8.777-2.796 2.796-5.727 5.46-8.78 7.98-3.052 2.518-6.227 4.892-9.515 7.114-3.288 2.22-6.688 4.29-10.19 6.192-3.504 1.903-7.11 3.642-10.806 5.205-3.697 1.564-7.487 2.953-11.357 4.157-3.87 1.203-7.823 2.22-11.846 3.044-4.024.824-8.12 1.45-12.274 1.873-4.156.423-8.372.64-12.64.64-3.914-.005-7.81-.195-11.677-.566-3.867-.372-7.703-.924-11.497-1.653-3.794-.727-7.545-1.633-11.242-2.71-3.696-1.076-7.34-2.324-10.917-3.74-3.577-1.415-7.088-2.997-10.52-4.742-3.435-1.744-6.79-3.65-10.054-5.715-3.267-2.064-6.443-4.285-9.517-6.66s-6.046-4.903-8.904-7.578l28.102-38.64s1.317 1.547 3.84 3.868c1.262 1.16 2.824 2.516 4.676 3.967 1.852 1.452 3.993 3 6.408 4.55 2.415 1.548 5.104 3.096 8.055 4.548 2.952 1.452 6.164 2.808 9.624 3.97 3.46 1.163 7.167 2.133 11.11 2.813 1.97.34 4 .61 6.087.792 2.088.183 4.23.28 6.43.283 2.636 0 5.24-.128 7.81-.38 2.568-.25 5.097-.622 7.583-1.112 2.487-.49 4.93-1.095 7.323-1.812 2.392-.716 4.732-1.545 7.017-2.478 2.285-.933 4.513-1.97 6.678-3.11 2.166-1.137 4.268-2.375 6.3-3.706 2.032-1.332 3.994-2.758 5.88-4.272 1.887-1.513 3.698-3.113 5.427-4.797 1.728-1.684 3.372-3.452 4.93-5.295 1.556-1.843 3.025-3.76 4.398-5.752 1.372-1.99 2.65-4.052 3.826-6.18 1.177-2.126 2.25-4.318 3.218-6.57.966-2.25 1.824-4.562 2.568-6.927.744-2.365 1.374-4.785 1.883-7.252.508-2.466.896-4.983 1.157-7.54.26-2.558.395-5.156.395-7.793l.015-147.084-.045-38.035A200 200 0 0 0 200 0z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+
+  <div
+    class="py-12 bg-slate-400 text-white relative z-50 mx-auto px-4 lg:p-4 lg:text-black lg:bg-white lg:rounded-sm lg:absolute lg:left-[45%] lg:right-[15%] lg:top-[30%] lg:z-50"
+    id="text"
+  >
+    <h1 class="text-2xl">Hello World,</h1>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed lg:text-lg">
+      Hier bündelt Jolution Projekte, Experimente und Tools rund um Frontend, Open Source, digitale Produktideen und
+      Prototypen mit Mikrocontrollern. Wenn dir etwas davon gefällt, schau gern auf GitHub vorbei und lass Sterne bei den Repos da.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-4">
+      <Link isExternal isButton href="https://github.com/jolution" type="primary" animateOnHover animationType="boop">
+        GitHub aufrufen und Sterne vergeben
+      </Link>
+      <Link href="#projekte" isButton type="secondary" animateOnHover animationType="boop">
+        Zu den Projekten
+      </Link>
+    </div>
+  </div>
+</section>
+
+<style>
+  #logo {
+    opacity: 0;
+    transform: translate3d(0, 180px, 0) scale(0.88);
+    animation: moon-set 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transition:
+      transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 380ms ease;
+    will-change: transform, opacity;
+  }
+
+  :global(.darkmode) #logo {
+    opacity: 1;
+    transform: translate3d(0, 24px, 0) scale(1);
+    animation: moon-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes moon-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 180px, 0) scale(0.88);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 24px, 0) scale(1);
+    }
+  }
+
+  @keyframes moon-set {
+    from {
+      opacity: 1;
+      transform: translate3d(0, 24px, 0) scale(1);
+    }
+
+    to {
+      opacity: 0;
+      transform: translate3d(0, 180px, 0) scale(0.88);
+    }
+  }
+
+  :global(.darkmode) #bg svg {
+    background-color: #142e4f !important;
+    background: linear-gradient(65deg, rgba(2, 0, 36, 1) 0%, rgba(20, 46, 79, 1) 65%, rgba(21, 49, 77, 1) 100%) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #logo {
+      transition: none;
+      animation: none;
+    }
+
+    :global(.darkmode) #logo {
+      animation: none;
+    }
+  }
+</style>

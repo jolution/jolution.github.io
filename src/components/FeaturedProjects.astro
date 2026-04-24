@@ -1,0 +1,132 @@
+---
+import { Badge, Heading, Link } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+import { getCollection } from 'astro:content'
+
+/**
+ * FeaturedProjects Component
+ *
+ * @description A component that displays featured projects from Astro Content Collections
+ */
+interface Props {
+  /**
+   * Additional classes to apply to the section
+   */
+  class?: string
+  /**
+   * The number of projects to display
+   * @default undefined (all projects)
+   */
+  limit?: number
+  /**
+   * The title for the section
+   * @default "Meine Projekte"
+   */
+  title?: string
+}
+
+const { class: className, limit, title = 'Meine Projekte' } = Astro.props
+
+// Get projects from content collection (exclude drafts)
+const projects = await getCollection('projects', ({ data }) => !data.draft)
+const projectImages = ['/projects/project-image-1.png', '/projects/project-image-2.png', '/projects/project-image-3.png']
+
+// Show all projects (or limited amount) and add featured images
+const allProjects = limit ? projects.slice(0, limit) : projects
+const featuredProjects = allProjects.map((project, index) => ({
+  ...project,
+  featuredImageSrc: project.data.featuredImage || null,
+  featuredImageCardSrc: project.data.featuredImageCard || project.data.featuredImage || null,
+  featuredImageFallback: projectImages[index % projectImages.length],
+  reverseImg: index % 2 !== 0,
+}))
+---
+
+<section class:list={[className, 'my-64']}>
+  <div class="container">
+    <Heading level="h2" class="mb-16">{title}</Heading>
+    {/* <p class="mb-12 text-lg">
+      Die sozialen Projekte findet ihr auf <Link href="https://juliankasimir.de/" isExternal>juliankasimir.de</Link>.
+    </p> */}
+    <div class="flex flex-col gap-32">
+      {
+        featuredProjects.map((project) => (
+          <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-24">
+            <a
+              href={'/portfolio/' + project.id}
+              tabindex="-1"
+              aria-hidden="true"
+              class:list={['media-wrapper rounded-lg overflow-hidden block', project.reverseImg ? 'md:order-last' : '']}
+            >
+              {project.featuredImageCardSrc ? (
+                <img
+                  src={project.featuredImageCardSrc}
+                  alt=""
+                  width={690}
+                  height={426}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-64 w-full object-cover"
+                />
+              ) : (
+                <img
+                  src={project.featuredImageFallback}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  class="h-64 w-full object-cover"
+                />
+              )}
+            </a>
+            <div class="space-content flex flex-col justify-center">
+              <div class="mb-3 flex flex-wrap gap-2">
+                {project.data.tags.map((tag) => (
+                  <Badge>{tag}</Badge>
+                ))}
+              </div>
+              <Heading level="h3">
+                <a href={'/portfolio/' + project.id} class="hover:underline">
+                  {project.data.title}
+                </a>
+              </Heading>
+              <p class="text-xl">{project.data.description}</p>
+              <div>
+                <Link href={'/portfolio/' + project.id} isButton animateOnHover animationType="nudge" aria-hidden="true" tabindex="-1">
+                  Mehr lesen
+                  <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Card-Grid Layout (alte Darstellung, auskommentiert)
+<section class:list={[className, 'my-64']}>
+  <div class="container">
+    <Heading level="h2" class="mb-6">{title}</Heading>
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+      {
+        featuredProjects.map((project) => (
+          <Card
+            imageComponent={
+              project.featuredImageSrc
+                ? { src: project.featuredImageSrc, width: 690, height: 426, format: 'jpeg' }
+                : project.featuredImageFallback
+            }
+            url={'/portfolio/' + project.id}
+            headingLevel="h2"
+            title={project.data.title}
+            footer={'Author: ' + project.data.author}
+          >
+            {project.data.description}
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>
+-->

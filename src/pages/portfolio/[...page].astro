@@ -1,0 +1,10 @@
+---
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths = (() => {
+  return [{ params: { page: undefined } }]
+}) satisfies GetStaticPaths
+---
+
+<meta http-equiv="refresh" content="0;url=/" />
+<script>window.location.replace('/')</script>

@@ -1,0 +1,111 @@
+---
+const sponsorshipUrl = 'https://github.com/jolution#sponsorship'
+const atosUrl = 'https://atos.net/de/deutschland'
+const atosLogo =
+  'https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/refs/heads/main/assets/atos_logo--blue.svg'
+---
+
+<section class="container">
+  <div class="sponsorship mt-10 mb-16 rounded-xl px-5 py-4 md:px-6">
+    <div class="sponsor-meta">
+      <img src={atosLogo} alt="Atos Logo" loading="lazy" decoding="async" />
+      <div>
+        <p class="kicker">Sponsorship</p>
+        <p class="text">
+          We are proud to be sponsored by
+          <a href={atosUrl} target="_blank" rel="noopener noreferrer">Atos</a>.
+          Thank you for your generous support of the Jolution organization.
+        </p>
+      </div>
+    </div>
+    <a
+      class="sponsor-link"
+      href={sponsorshipUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open sponsorship on GitHub"
+    >
+      Sponsor on GitHub
+    </a>
+  </div>
+</section>
+
+<style lang="scss">
+  .sponsorship {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--border-color-subtle);
+    background: light-dark(rgb(255 255 255 / 0.7), rgb(4 5 13 / 0.65));
+    backdrop-filter: blur(2px);
+  }
+
+  .sponsor-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .sponsor-meta img {
+    width: 120px;
+    height: 56px;
+    border-radius: 10px;
+    object-fit: contain;
+    object-position: center;
+    background: #fff;
+    padding: 0.35rem;
+    border: 1px solid var(--border-color-subtle);
+  }
+
+  .kicker {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-neutral-500);
+  }
+
+  .text {
+    margin: 0.2rem 0 0;
+    font-size: 0.98rem;
+    color: var(--foreground-color);
+    max-inline-size: 62ch;
+  }
+
+  .text a {
+    font-weight: 700;
+  }
+
+  .sponsor-link {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-primary-border);
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary-text);
+    background: var(--color-primary-bg);
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      border-color var(--animation-speed-fast) var(--cubic-bezier),
+      background-color var(--animation-speed-fast) var(--cubic-bezier),
+      color var(--animation-speed-fast) var(--cubic-bezier);
+  }
+
+  .sponsor-link:hover,
+  .sponsor-link:focus-visible {
+    border-color: var(--color-secondary-border);
+    background: var(--color-secondary-bg);
+    color: var(--color-secondary-text);
+  }
+
+  @media (max-width: 48rem) {
+    .sponsorship {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

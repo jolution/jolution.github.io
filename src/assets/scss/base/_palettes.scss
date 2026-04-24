@@ -1,0 +1,54 @@
+@use 'sass:color';
+
+$primary: #0099cc;
+$secondary: #337ab7;
+$neutral: #292c2f;
+$outline: #ff9900;
+
+:root {
+  // Brand base colors
+  --brand-primary: #{$primary};
+  --brand-secondary: #{$secondary};
+  --brand-neutral: #{$neutral};
+  --brand-outline: #{$outline};
+
+  // Primary palette steps (Sass-computed → no CSS oklch(from ...) needed)
+  --color-primary-100: #{color.scale($primary, $lightness: 75%)};
+  --color-primary-200: #{color.scale($primary, $lightness: 50%)};
+  --color-primary-300: #{color.scale($primary, $lightness: 25%)};
+  --color-primary-400: #{color.scale($primary, $lightness: 5%)};
+  --color-primary-500: #{color.scale($primary, $lightness: -25%)};
+
+  // Secondary palette steps
+  --color-secondary-100: #{color.scale($secondary, $lightness: 75%)};
+  --color-secondary-200: #{color.scale($secondary, $lightness: 50%)};
+  --color-secondary-300: #{color.scale($secondary, $lightness: 25%)};
+  --color-secondary-400: #{color.scale($secondary, $lightness: 5%)};
+  --color-secondary-500: #{color.scale($secondary, $lightness: -25%)};
+
+  // Outline steps
+  --color-outline-100: #{color.scale($outline, $lightness: 25%)};
+  --color-outline-200: #{$outline};
+
+  // Component button / link: primary
+  --color-primary-border: light-dark(
+    #{color.scale($primary, $lightness: -30%)},
+    #{color.scale($primary, $lightness: 50%)}
+  );
+  --color-primary-bg: light-dark(#{$primary}, #{color.scale($primary, $lightness: -30%)});
+  --color-primary-text: light-dark(
+    #{color.scale($primary, $lightness: -60%)},
+    #{color.scale($primary, $lightness: 85%)}
+  );
+
+  // Component button / link: secondary
+  --color-secondary-border: light-dark(
+    #{color.scale($secondary, $lightness: -30%)},
+    #{color.scale($secondary, $lightness: 50%)}
+  );
+  --color-secondary-bg: light-dark(#{$secondary}, #{color.scale($secondary, $lightness: -30%)});
+  --color-secondary-text: light-dark(
+    #{color.scale($secondary, $lightness: 80%)},
+    #{color.scale($secondary, $lightness: 85%)}
+  );
+}
