@@ -46,7 +46,6 @@ interface Props {
 const {
   title = themeConfig.seo.title,
   description = themeConfig.seo.description ?? '',
-  url = Astro.url.href,
   image = themeConfig.seo.image ?? null,
   author = themeConfig.seo.author ?? '',
   type = 'website',
@@ -121,24 +120,12 @@ const locale = lang === 'en' ? 'en_US' : 'de_DE'
       extend={{
         meta: [
           {
+            name: 'robots',
+            content: 'noindex, nofollow',
+          },
+          {
             name: 'author',
             content: author,
-          },
-          {
-            name: 'twitter:card',
-            content: 'summary_large_image',
-          },
-          {
-            name: 'twitter:title',
-            content: title,
-          },
-          {
-            name: 'twitter:description',
-            content: description,
-          },
-          {
-            name: 'twitter:image',
-            content: imageUrl,
           },
         ],
       }}
