@@ -41,6 +41,10 @@ interface Props {
    * Set to false to use the title as-is without appending site name
    */
   useTitleTemplate?: boolean
+  /**
+   * Whether to prevent indexing by search engines
+   */
+  noindex?: boolean
 }
 
 const {
@@ -50,6 +54,7 @@ const {
   author = themeConfig.seo.author ?? '',
   type = 'website',
   useTitleTemplate = true,
+  noindex = false,
 } = Astro.props
 
 // For social sharing, we need the full absolute URL
@@ -94,6 +99,8 @@ const locale = lang === 'en' ? 'en_US' : 'de_DE'
       titleDefault={themeConfig.seo.title}
       description={description}
       canonical={absoluteUrl}
+      noindex={noindex}
+      nofollow={noindex}
       openGraph={{
         basic: {
           title: title,
@@ -119,10 +126,6 @@ const locale = lang === 'en' ? 'en_US' : 'de_DE'
       }}
       extend={{
         meta: [
-          {
-            name: 'robots',
-            content: 'noindex, nofollow',
-          },
           {
             name: 'author',
             content: author,

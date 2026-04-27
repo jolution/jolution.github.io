@@ -22,18 +22,12 @@ const translatePath = useTranslatedPath(lang)
     <Link href={translatePath('/')}>{t('nav.home')}</Link>
   </li>
   <li class="menu-item">
-    <Link href={translatePath('/contact')}>{t('nav.contact')}</Link>
+    <a href={translatePath('/') + '#projekte'}>{t('nav.projects')}</a>
   </li>
   <li class="menu-item type-icon animate-rotate">
     <Link href="https://github.com/jolution" isExternal hideIcon>
       <Icon aria-hidden="true" name="lucide:github" size="32" />
       <span class="sr-only">{t('nav.github')}</span>
-    </Link>
-  </li>
-  <li class="menu-item type-icon animate-rotate">
-    <Link href="https://www.instagram.com/jolution/" isExternal hideIcon>
-      <Icon aria-hidden="true" name="lucide:instagram" size="32" />
-      <span class="sr-only">{t('nav.instagram')}</span>
     </Link>
   </li>
   {

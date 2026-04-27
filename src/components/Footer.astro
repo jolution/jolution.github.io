@@ -41,9 +41,21 @@ const translatePath = useTranslatedPath(lang)
           <p class="font-semibold">{t('footer.contact')}</p>
           <ul class="flex flex-col gap-3">
             <li>
+              <Link isExternal href="https://github.com/jolution" hideIcon>
+                <Icon aria-hidden="true" name="lucide:github" size={18} class="inline-block align-middle me-2" />
+                GitHub
+              </Link>
+            </li>
+            <li>
               <Link isExternal href="https://www.instagram.com/jolution" hideIcon>
                 <Icon aria-hidden="true" name="lucide:instagram" size={18} class="inline-block align-middle me-2" />
                 Instagram
+              </Link>
+            </li>
+            <li>
+              <Link isExternal href="https://www.linkedin.com/in/julian-kasimir/" hideIcon>
+                <Icon aria-hidden="true" name="lucide:linkedin" size={18} class="inline-block align-middle me-2" />
+                LinkedIn
               </Link>
             </li>
             <li>
