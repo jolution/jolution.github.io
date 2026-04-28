@@ -86,7 +86,7 @@ const yearsSinceFoundation = new Date().getFullYear() - 2013
         <p class="max-w-3xl leading-relaxed">
           Drei ausgewählte Kundenprojekte, bewusst nur als kleiner Ausschnitt ohne öffentliche Detailseiten:
           Workfield (Mitarbeiterstundenerfassung), picman (Browser Extension) sowie der
-          <strong>Tourplaner</strong> — eine Angular-Webanwendung zur Planung und Verwaltung von Touren.
+          Tourplaner — eine Angular-Webanwendung zur Planung und Verwaltung von Touren.
         </p>
         <div class="mt-6 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-3">
           <article>
@@ -97,7 +97,7 @@ const yearsSinceFoundation = new Date().getFullYear() - 2013
               decoding="async"
               class="h-auto w-full object-contain"
             />
-            <p class="mt-3 text-sm">Workfield</p>
+            <p class="mt-3 text-sm font-semibold">Workfield</p>
             <p class="text-sm">Mitarbeiterstundenerfassung Web-Application</p>
           </article>
           <article>
@@ -108,7 +108,7 @@ const yearsSinceFoundation = new Date().getFullYear() - 2013
               decoding="async"
               class="h-auto w-full object-contain"
             />
-            <p class="mt-3 text-sm">picman</p>
+            <p class="mt-3 text-sm font-semibold">picman</p>
             <p class="text-sm">Browser Extension für rollende Kommissionierung</p>
           </article>
           <article>
@@ -124,31 +124,11 @@ const yearsSinceFoundation = new Date().getFullYear() - 2013
           </article>
         </div>
         <div class="mt-8">
-          <button
-            id="project-reveal-email-btn"
-            type="button"
-            class="button button--filled type-secondary button--md"
-          >
-            Projekt anfragen per E-Mail
-          </button>
-          <a id="project-email-reveal" class="hidden mt-3 block" aria-live="polite"></a>
+          <p class="text-sm leading-relaxed">
+            Projektanfragen gerne per E-Mail.
+          </p>
         </div>
       </div>
     </section>
   </div>
 </DefaultLayout>
-
-<script>
-  const btn = document.getElementById('project-reveal-email-btn')
-  const target = document.getElementById('project-email-reveal') as HTMLAnchorElement | null
-  const parts = ['julian', '@', 'jolution', '.com']
-  btn?.addEventListener('click', () => {
-    const email = parts.join('')
-    if (target) {
-      target.href = `mailto:${email}`
-      target.textContent = email
-      target.classList.remove('hidden')
-    }
-    btn.classList.add('hidden')
-  })
-</script>

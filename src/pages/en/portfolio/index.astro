@@ -1,18 +1,22 @@
 ---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import FeaturedProjects from '@components/FeaturedProjects.astro'
+import { Link } from 'accessible-astro-components'
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="refresh" content="0; url=/en/#projekte" />
-    <title>Redirecting to Projects...</title>
-  </head>
-  <body>
-    <script>
-      window.location.replace('/en/#projekte')
-    </script>
-    <p><a href="/en/#projekte">Go to projects</a></p>
-  </body>
-</html>
+<DefaultLayout title="Projects" description="Overview of the current Jolution projects." noindex={true}>
+  <PageHeader
+    title="Projects"
+    subtitle="Browse the current Jolution projects as standalone portfolio pages instead of a homepage anchor."
+    bgType="bordered"
+  />
+
+  <section class="mt-8">
+    <div class="container">
+      <Link href="/en/" isButton type="secondary" animateOnHover animationType="boop">Back to home</Link>
+    </div>
+  </section>
+
+  <FeaturedProjects class="my-12" title="Project Overview" />
+</DefaultLayout>

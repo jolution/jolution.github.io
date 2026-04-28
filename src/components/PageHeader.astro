@@ -128,7 +128,10 @@ const sanitizedSubtitle: string = subtitle
                   return null
                 }
 
-                const url = `${localePrefix}/${segments.slice(0, index + 1).join('/')}`
+                const url =
+                  segment === 'portfolio'
+                    ? `${localePrefix || ''}/#projekte`
+                    : `${localePrefix}/${segments.slice(0, index + 1).join('/')}`
                 const isLast = index === segments.length - 1 || (joinLastBreadcrumb && index === segments.length - 2)
 
                 const formattedName = (() => {

@@ -122,7 +122,7 @@ const featuredProjects = allProjects.map((project, index) => ({
                 ? { src: project.featuredImageSrc, width: 690, height: 426, format: 'jpeg' }
                 : project.featuredImageFallback
             }
-            url={'/portfolio/' + project.id}
+            url={'/portfolio/' + project.slug}
             headingLevel="h2"
             title={project.data.title}
             footer={'Author: ' + project.data.author}

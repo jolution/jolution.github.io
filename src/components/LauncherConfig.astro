@@ -9,6 +9,7 @@ import {
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import themeConfig from '@theme-config'
+import { getLangFromUrl, useTranslatedPath } from '@i18n/utils'
 
 /**
  * Launcher preferences for accessibility and theme.
@@ -34,11 +35,15 @@ const launcherPreferenceItems = [
  *
  * @type {Array<{ label: string, href: string, keywords: Array<string> }>}
  */
-const launcherProjectItems = (await getCollection('projects')).map((project) => ({
-  label: project.data.title,
-  href: `/portfolio/${project.id}`,
-  keywords: [project.data.author, ...project.data.tags],
-}))
+const lang = getLangFromUrl(Astro.url)
+const translatePath = useTranslatedPath(lang)
+const launcherProjectItems = (await getCollection('projects', ({ data, id }) => !data.draft && id.startsWith(`${lang}/`))).map(
+  (project) => ({
+    label: project.data.title,
+    href: translatePath(`/portfolio/${project.id.replace(`${lang}/`, '')}`),
+    keywords: [project.data.author, ...project.data.tags],
+  }),
+)
 
 /**
  * Navigation items for the launcher, built from `themeConfig.navigation.items`.

@@ -3,6 +3,10 @@ const sponsorshipUrl = 'https://github.com/jolution#sponsorship'
 const atosUrl = 'https://atos.net/de/deutschland'
 const atosLogo =
   'https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/refs/heads/main/assets/atos_logo--blue.svg'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <section class="container hidden lg:block">
@@ -10,11 +14,11 @@ const atosLogo =
     <div class="sponsor-meta">
       <img src={atosLogo} alt="Atos Logo" loading="lazy" decoding="async" />
       <div>
-        <p class="kicker">Sponsorship</p>
+        <p class="kicker">{t('sponsorship.kicker')}</p>
         <p class="text">
-          We are proud to be sponsored by
+          {t('sponsorship.text.before')}
           <a href={atosUrl} target="_blank" rel="noopener noreferrer">Atos</a>.
-          Thank you for your generous support of the Jolution organization.
+          {t('sponsorship.text.after')}
         </p>
       </div>
     </div>
@@ -23,9 +27,9 @@ const atosLogo =
       href={sponsorshipUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Open sponsorship on GitHub"
+      aria-label={t('sponsorship.linkAria')}
     >
-      Sponsor on GitHub
+      {t('sponsorship.linkText')}
     </a>
   </div>
 </section>

@@ -29,6 +29,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const projectsWithImages = projects.map((project, index) => {
     return {
       ...project,
+      slug: project.id.replace('de/', ''),
       featuredImage: project.data.featuredImageCard || project.data.featuredImage || projectImages[index % projectImages.length],
     }
   })
@@ -109,7 +110,7 @@ const { page, currentTag, uniqueTags } = Astro.props
             <li>
               <Card
                 imageComponent={project.featuredImage}
-                url={'/portfolio/' + project.id}
+                url={'/portfolio/' + project.slug}
                 title={project.data.title}
                 headingLevel="h2"
                 footer={'Author: ' + project.data.author}
