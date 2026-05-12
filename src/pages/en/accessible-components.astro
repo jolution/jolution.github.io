@@ -32,7 +32,6 @@ import {
   TabsPanel,
   Textarea,
   Tooltip,
-  Video,
 } from 'accessible-astro-components'
 
 const components = [
@@ -618,12 +617,16 @@ const components = [
         </Tooltip>
 
         <Heading level="h2" id="video">Video</Heading>
-        <p>The Video component is used to display a video with a title and a source.</p>
+        <p>Instead of embedding YouTube, this page provides direct external links to the videos.</p>
         <Heading level="h3">Default</Heading>
-        <Video src="https://www.youtube.com/watch?v=j8K-ESJF814" title="Video" />
+        <Link href="https://www.youtube.com/watch?v=j8K-ESJF814" isExternal>
+          Watch on YouTube
+        </Link>
 
         <Heading level="h3">Aspect ratio</Heading>
-        <Video src="https://www.youtube.com/watch?v=j8K-ESJF814" title="Video" ratio="1:1" />
+        <Link href="https://www.youtube.com/watch?v=j8K-ESJF814" isExternal>
+          Watch on YouTube (square version)
+        </Link>
       </div>
       <div class="components-navigation space-content">
         <Heading level="h3" size="h4">On this page</Heading>
