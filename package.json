@@ -40,7 +40,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-css-order": "^2.2.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "sanitize-html": "^2.17.2",
+    "sanitize-html": "^2.17.3",
     "sass": "^1.98.0",
     "svgo": "^4.0.1",
     "tailwindcss": "^4.2.2"
