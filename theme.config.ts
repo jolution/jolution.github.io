@@ -33,14 +33,7 @@ export default defineThemeConfig({
         external: true,
         excludeFromLauncher: true,
       },
-      {
-        type: 'link',
-        label: 'Go to our Instagram profile, opens in new tab',
-        href: 'https://www.instagram.com/jolution/',
-        icon: 'lucide:instagram',
-        external: true,
-        excludeFromLauncher: true,
-      },
+
     ],
   },
   socials: [
