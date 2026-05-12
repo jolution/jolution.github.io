@@ -2,7 +2,7 @@
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
 
-Persönliche Website und Portfolio von Julian Kasimir mit Projekten, Ideen und Experimenten.
+Website und Portfolio von Jolution mit Projekten, Ideen und Experimenten.
 
 ## Installation & Entwicklung
 
